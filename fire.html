@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Fire Services | Sneha Electrical</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* HERO HEADER */
+.page-hero{
+  position: relative;
+  background: url("images/fire_hydrant_system.webp") center/cover no-repeat;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+.page-hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,0.55);
+}
+.page-hero .content{
+  position: relative;
+  z-index: 2;
+}
+
+/* modern service card */
+.service-card{
+  background:#ffffff;
+  border-radius:14px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.08);
+  padding:24px;
+  margin-bottom:28px;
+  transition: all 0.25s ease;
+}
+
+/* hover lift effect */
+.service-card:hover{
+  transform: translateY(-6px);
+  box-shadow:0 18px 40px rgba(0,0,0,0.14);
+}
+
+.service-card img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  border-radius:10px;
+}
+
+/* big clear CTA button */
+.quote-btn{
+  padding:16px 34px;
+  font-size:1.1rem;
+  font-weight:600;
+  border-radius:10px;
+  box-shadow:0 8px 20px rgba(220,53,69,0.35);
+  transition:0.25s;
+}
+.quote-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 28px rgba(220,53,69,0.45);
+}
+
+</style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg bg-white shadow sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="index.html">Sneha Electrical</a>
+    <a href="index.html#contact" class="btn btn-danger ms-auto d-none d-lg-block">
+      Get Quote
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="container content">
+    <h1 class="fw-bold">Fire Protection Systems</h1>
+    <p class="lead mb-0">Complete fire safety solutions for industrial, commercial and residential projects</p>
+  </div>
+</section>
+
+<section class="container py-5">
+
+  <!-- Fire Hydrant -->
+  <div class="row align-items-center service-card">
+    <div class="col-md-8">
+      <h4 class="fw-bold text-danger">Fire Hydrant System</h4>
+      <p>
+        A complete network of piping connected to a reliable water source to
+        provide immediate water supply for firefighting. Hydrant pumps ensure
+        sufficient pressure when municipal supply is inadequate, enabling fire
+        engines to quickly control and suppress fires.
+      </p>
+    </div>
+    <div class="col-md-4">
+      <img src="images/fire_hydrant_system.webp">
+    </div>
+  </div>
+
+  <!-- Detection -->
+  <div class="row align-items-center service-card flex-md-row-reverse">
+    <div class="col-md-8">
+      <h4 class="fw-bold text-danger">Fire Detection & Suppression</h4>
+      <p>
+        Early detection systems protect occupants and emergency responders.
+        Automated suppression systems extinguish fires without human intervention.
+        Options include conventional, addressable, intelligent and wireless systems.
+      </p>
+    </div>
+    <div class="col-md-4">
+      <img src="images/fire-detection.webp">
+    </div>
+  </div>
+
+  <!-- Sprinkler -->
+  <div class="row align-items-center service-card">
+    <div class="col-md-8">
+      <h4 class="fw-bold text-danger">Fire Sprinkler System</h4>
+      <p>
+        Automatic sprinklers detect heat and immediately release water to control
+        or extinguish fire before it spreads. Distribution piping and sprinkler
+        heads are permanently installed throughout protected areas.
+      </p>
+    </div>
+    <div class="col-md-4">
+      <img src="images/sprinkler.webp">
+    </div>
+  </div>
+
+  <!-- Pump House -->
+  <div class="row align-items-center service-card flex-md-row-reverse">
+    <div class="col-md-8">
+      <h4 class="fw-bold text-danger">Fire Pump House</h4>
+      <p>
+        Fire pumps deliver high-pressure water to hydrant and sprinkler systems.
+        Systems are UL/FM approved and comply with NFPA-20 standards for maximum
+        reliability during emergencies.
+      </p>
+    </div>
+    <div class="col-md-4">
+      <img src="images/fire pump house.jpg">
+    </div>
+  </div>
+
+  <!-- High Mast -->
+  <div class="row align-items-center service-card">
+    <div class="col-md-8">
+      <h4 class="fw-bold text-danger">High Mast Erection</h4>
+      <p>
+        High mast lighting provides powerful illumination for large areas without
+        multiple poles. Heights from 12–30m with safety accessories and aviation
+        obstruction lights included.
+      </p>
+    </div>
+    <div class="col-md-4">
+      <img src="images/high mast erection.webp">
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="text-center mt-4">
+    <a href="index.html#contact" class="btn btn-danger cta-btn">
+      Request a Quote
+    </a>
+  </div>
+
+</section>
+
+<footer class="bg-dark text-light text-center py-3">
+  © 2025 Sneha Electrical Corporation & Co.
+</footer>
+
+</body>
+</html>

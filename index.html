@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sneha Electrical</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- AOS -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="style.css">
+
+<!-- React -->
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+
+</head>
+
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script type="text/babel">
+
+const HERO_IMAGES = [
+  "images/sprinkler.webp",
+  "images/fire_hydrant_system.webp",
+  "images/fire-detection.webp"
+];
+
+const SERVICES = [
+  {
+    name: "Fire Services",
+    desc: "Design, installation and maintenance of complete fire protection and fire fighting systems as per safety norms."
+  },
+  {
+    name: "Electrical Services",
+    desc: "HT & LT electrical contracting, wiring, panels, and power distribution solutions."
+  },
+  {
+    name: "Fabrication Services",
+    desc: "Custom metal fabrication, structures, supports, and industrial fabrication work."
+  }
+];
+
+
+const STATS = [
+  { end: 30, suffix: "+", label: "Years in Business" },
+  { end: 25, suffix: "M+", label: "Industries Served" },
+  { end: 5000, suffix: "+", label: "Customers" },
+  { end: 50, suffix: "+", label: "Trained Professionals" }
+];
+
+function validateEmail(email) {
+  const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+$/;
+  return regex.test(email);
+}
+
+function App() {
+  const [heroIndex, setHeroIndex] = React.useState(0);
+  const [counts, setCounts] = React.useState(STATS.map(() => 0));
+  const [selectedService, setSelectedService] = React.useState(null);
+  const [successMsg, setSuccessMsg] = React.useState("");
+  const statsRef = React.useRef(null);
+
+  React.useEffect(() => {
+    AOS.init({ once: true });
+  }, []);
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setHeroIndex(prev => (prev + 1) % HERO_IMAGES.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+
+      STATS.forEach((stat, i) => {
+        let value = 0;
+        const step = stat.end / 60;
+        const counter = setInterval(() => {
+          value += step;
+          if (value >= stat.end) {
+            value = stat.end;
+            clearInterval(counter);
+          }
+          setCounts(prev => {
+            const copy = [...prev];
+            copy[i] = Math.floor(value);
+            return copy;
+          });
+        }, 16);
+      });
+
+      observer.disconnect();
+    }, { threshold: 0.4 });
+
+    if (statsRef.current) observer.observe(statsRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+
+    if (!validateEmail(form.email.value)) {
+      setSuccessMsg("Please enter a valid email address.");
+      return;
+    }
+
+    const data = new FormData();
+    data.append("entry.696230582", form.name.value);
+    data.append("entry.1597044561", form.phone.value);
+    data.append("entry.1487688566", form.email.value);
+    data.append("entry.293572896", form.message.value);
+
+    fetch("https://docs.google.com/forms/d/e/1FAIpQLSdBrU96Rqw0oGvIzPjDDraPXJbaTarhDukzEORDUMLckOmmYg/formResponse", {
+      method: "POST",
+      mode: "no-cors",
+      body: data
+    });
+
+    setSuccessMsg("Thank you! Your message has been submitted successfully.");
+    form.reset();
+  }
+
+  return (
+    <>
+      {/* NAVBAR */}
+      <nav className="navbar navbar-expand-lg bg-white shadow sticky-top">
+        <div className="container">
+          <span className="navbar-brand fw-bold">Sneha Electrical</span>
+          <button className="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="nav">
+            <ul className="navbar-nav ms-auto">
+              <li className="nav-item"><a className="nav-link" href="#about">About</a></li>
+              <li className="nav-item"><a className="nav-link" href="#products">Services</a></li>
+              <li className="nav-item"><a className="nav-link" href="#contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      {/* HERO */}
+      <section className="hero" style={{ "--bg": `url(${HERO_IMAGES[heroIndex]})` }}>
+        <style>{`.hero::before{background-image:var(--bg);}`}</style>
+        <div className="container">
+          <div className="hero-content">
+            <span className="badge bg-danger mb-3">Trusted Since 2007</span>
+            <h1>Pune’s Leading<br/> 
+                Fire Safety <br/>
+            Solutions Company </h1>
+            <p>End-to-end fire protection and electrical contracting services.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ABOUT */}
+      <section id="about" className="container py-5 text-center">
+        <h2 className="text-danger">About Us</h2>
+        <p className="mt-3">
+          Founded in the year 2007 in Pune (Maharashtra, India),
+          we "Sneha Electrical Corporation & Co. are the leading
+          manufacturer, and supplier of a qualitative gamut of Fire
+          Hydrant Detection and Suppression System, Electrical
+          Control Panels, ACB & VCB Power Panels, Power Panels,
+          Distribution Panels, APFC Panels, AC & DC Drive Panels,
+          AMF Panels, PLC Panels, VFD Panels, etc. Our products
+          are highly acknowledged for their features like easy to
+          operate, low maintenance, high performance, strong
+          construction and long service life. Under the dynamic
+          leadership of our proprietor, "Mr. Anand Barake", we have
+          gained the respected position in the market. His market
+          experience and knowledge helps us to stand in the
+          market as a reputed firm. We Registered Electrical as
+          well as Fire Contractor.
+        </p>
+      </section>
+      
+      {/* STATS */}
+        <section className="stats-section" ref={statsRef}>
+            <div className="stats-right w-100">
+                <small className="fs-5 fw-semibold">
+  Planting confidence with Sneha Electrical
+</small>
+
+                <div className="stats-grid">
+                    {STATS.map((s, i) => (
+                        <div className="stat" key={i}>
+                            <h3>{counts[i]}{s.suffix}</h3>
+                            <p>{s.label}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+
+     
+        {/* SERVICES */}
+<section id="products" className="container py-5">
+  <h2 className="text-danger text-center mb-4">Our Services</h2>
+
+  <p className="text-center text-muted mb-5">
+    Specialized solutions across fire safety, electrical works,
+    and industrial fabrication.
+  </p>
+
+  <div className="row justify-content-center g-4">
+
+    {/* FIRE */}
+    <div className="col-md-4">
+      <a href="fire.html" className="text-decoration-none text-dark">
+        <div className="card p-5 shadow h-100 text-center">
+          <h4 className="fw-bold mb-3">Fire Services</h4>
+          <p className="text-muted">
+            Fire protection & firefighting systems
+          </p>
+        </div>
+      </a>
+    </div>
+
+    {/* ELECTRICAL */}
+    <div className="col-md-4">
+      <a href="electrical.html" className="text-decoration-none text-dark">
+        <div className="card p-5 shadow h-100 text-center">
+          <h4 className="fw-bold mb-3">Electrical Services</h4>
+          <p className="text-muted">
+            HT & LT electrical contracting solutions
+          </p>
+        </div>
+      </a>
+    </div>
+
+    {/* FABRICATION */}
+    <div className="col-md-4">
+      <a href="fabrication.html" className="text-decoration-none text-dark">
+        <div className="card p-5 shadow h-100 text-center">
+          <h4 className="fw-bold mb-3">Fabrication Services</h4>
+          <p className="text-muted">
+            Industrial & custom metal fabrication
+          </p>
+        </div>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+{/* GROWTH PARTNERS */}
+<section id="partners" className="container py-5">
+  <h2 className="text-center fw-bold mb-4">Our Growth Partners</h2>
+
+  <div className="row g-4 align-items-center justify-content-center">
+
+    {[
+      "xrbia.png",
+      "lt_construction.png",
+      "gabriel.png",
+      "shreya.png",
+      "landed_city.png",
+      "dorsogna.png",
+      "amanora.png",
+      "shapoorji.png",
+      "bobst.png"
+    ].map((logo, i) => (
+      <div className="col-6 col-md-3 col-lg-2 text-center" key={i}>
+        <div className="p-4 shadow-sm bg-white rounded h-100 d-flex align-items-center ">
+          <img
+            src={`images/partners/${logo}`}
+            alt="Partner Logo"
+            style={{ maxWidth: "100%", maxHeight: "150px", objectFit: "contain" }}
+          />
+        </div>
+      </div>
+    ))}
+
+  </div>
+</section>
+
+
+
+      {/* CONTACT */}
+      <section id="contact" className="container py-5">
+        <h2 className="text-danger text-center mb-4">Contact Us</h2>
+
+        <form onSubmit={handleSubmit} className="mx-auto" style={{ maxWidth: "600px" }}>
+          <input className="form-control mb-3" name="name" placeholder="Your Name" required />
+          <input className="form-control mb-3" name="phone" placeholder="Phone Number" required />
+          <input className="form-control mb-3" name="email" placeholder="Email Address" required />
+          <textarea className="form-control mb-3" name="message" rows="4" placeholder="Message" required></textarea>
+          <button className="btn btn-danger w-100">Submit</button>
+        </form>
+
+        {successMsg && <div className="alert alert-success mt-3 text-center">{successMsg}</div>}
+      </section>
+
+      {/* SERVICE MODAL */}
+        <div className="modal fade" id="serviceModal" tabIndex="-1">
+        <div className="modal-dialog modal-dialog-centered">
+            <div className="modal-content">
+            <div className="modal-header">
+                <h5 className="modal-title">
+                {selectedService?.name}
+                </h5>
+                <button className="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div className="modal-body">
+                <p>{selectedService?.desc}</p>
+            </div>
+            </div>
+        </div>
+        </div>
+
+
+      {/* FOOTER */}
+      <footer className="bg-dark text-light text-center p-4">
+        © 2025 Sneha Electrical Corporation & Co. | Pune
+      </footer>
+
+      {/* WHATSAPP */}
+      <a href="https://wa.me/917888024282" className="whatsapp" >💬</a>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
