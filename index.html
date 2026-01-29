@@ -82,6 +82,19 @@ function App() {
   }, []);
 
   React.useEffect(() => {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("go") === "contact") {
+    setTimeout(() => {
+      const el = document.getElementById("contact");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 300); // wait for React to render
+  }
+}, []);
+
+
+  React.useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
       if (!entry.isIntersecting) return;
 
