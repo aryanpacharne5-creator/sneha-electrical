@@ -111,3 +111,96 @@ body {
   font-size: 2rem;
   letter-spacing: 0.5px;
 }
+
+.service-slide{
+  position: relative;
+  display: block;
+  height: 220px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  color: #fff;
+  transition: 0.3s;
+}
+
+.service-slide:hover{
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+}
+
+/* dark overlay for readability */
+.service-overlay{
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,0.45);
+  z-index:1;
+}
+
+/* text on top */
+.service-text{
+  position:absolute;
+  inset:0;
+  z-index:2;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+}
+
+.service-text h4{
+  font-weight:700;
+  margin-bottom:8px;
+}
+
+.service-text p{
+  margin:0;
+  opacity:0.9;
+}
+
+/* slideshow layer */
+.service-slide::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+  z-index:0;
+  animation-duration:12s;
+  animation-iteration-count:infinite;
+  animation-timing-function:ease-in-out;
+}
+
+/* Fire slideshow */
+.fire-slide::before{
+  animation-name: fireShow;
+}
+@keyframes fireShow{
+  0%   {background-image:url("images/sprinkler.webp");}
+  33%  {background-image:url("images/fire_hydrant_system.webp");}
+  66%  {background-image:url("images/fire-detection.jpg");}
+  100% {background-image:url("images/sprinkler.webp");}
+}
+
+/* Electrical slideshow */
+.electrical-slide::before{
+  animation-name: electricalShow;
+}
+@keyframes electricalShow{
+  0%   {background-image:url("images/pcc_panel.jpg");}
+  33%  {background-image:url("images/mcc_panel.jpeg");}
+  66%  {background-image:url("images/apfc_panel.jpg");}
+  100% {background-image:url("images/pcc_panel.jpg");}
+}
+
+/* Fabrication slideshow */
+.fabrication-slide::before{
+  animation-name: fabricationShow;
+}
+@keyframes fabricationShow{
+  0%   {background-image:url("images/fabrication/gate.webp");}
+  33%  {background-image:url("images/fabrication/grill.jpg");}
+  66%  {background-image:url("images/fabrication/elevation.jpg");}
+  100% {background-image:url("images/fabrication/gate.webp");}
+}

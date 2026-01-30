@@ -15,22 +15,54 @@ body{
 /* HERO HEADER */
 .page-hero{
   position: relative;
-  background: url("images/fire_hydrant_system.webp") center/cover no-repeat;
-  min-height: 280px;
+  min-height: 320px;
   display: flex;
   align-items: center;
-  color: #fff;
+  color:#fff;
+  overflow:hidden;
 }
+
+/* slideshow layer */
+.page-hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+  z-index:0;
+  animation: fireHeroSlide 15s infinite;
+}
+
+/* dark overlay for text readability */
 .page-hero::after{
   content:"";
   position:absolute;
   inset:0;
-  background: rgba(0,0,0,0.55);
+  background:rgba(0,0,0,0.55);
+  z-index:1;
 }
+
+/* keep text above overlay */
 .page-hero .content{
-  position: relative;
-  z-index: 2;
+  position:relative;
+  z-index:2;
 }
+
+@keyframes fireHeroSlide{
+  0%{
+    background-image:url("images/fire_hydrant_system.webp");
+  }
+  33%{
+    background-image:url("images/sprinkler.webp");
+  }
+  66%{
+    background-image:url("images/fire-detection.jpg");
+  }
+  100%{
+    background-image:url("images/fire_hydrant_system.webp");
+  }
+}
+
 
 /* modern service card */
 .service-card{
@@ -120,7 +152,7 @@ body{
       </p>
     </div>
     <div class="col-md-4">
-      <img src="images/fire-detection.webp">
+      <img src="images/fire-detection.jpg">
     </div>
   </div>
 

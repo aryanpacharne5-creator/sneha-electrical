@@ -15,21 +15,44 @@ body{
 /* HERO */
 .page-hero{
   position: relative;
-  background: url("images/pcc_panel.jpg") center/cover no-repeat;
-  min-height: 280px;
+  min-height: 320px;
   display: flex;
   align-items: center;
   color:#fff;
+  overflow:hidden;
 }
+
+.page-hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+  z-index:0;
+
+  /* slideshow for electrical page */
+  animation: electricalHeroSlide 15s infinite linear;
+}
+
+
 .page-hero::after{
   content:"";
   position:absolute;
   inset:0;
   background:rgba(0,0,0,0.55);
+  z-index:1;
 }
+
 .page-hero .content{
   position:relative;
   z-index:2;
+}
+
+@keyframes electricalHeroSlide{
+  0%   {background-image:url("images/pcc_panel.jpg");}
+  33%  {background-image:url("images/mcc_panel.jpeg");}
+  66%  {background-image:url("images/apfc_panel.jpg");}
+  100% {background-image:url("images/pcc_panel.jpg");}
 }
 
 /* SERVICE CARD */

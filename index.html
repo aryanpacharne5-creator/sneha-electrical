@@ -32,7 +32,7 @@
 const HERO_IMAGES = [
   "images/sprinkler.webp",
   "images/fire_hydrant_system.webp",
-  "images/fire-detection.webp"
+  "images/fire-detection.jpg"
 ];
 
 const SERVICES = [
@@ -52,8 +52,8 @@ const SERVICES = [
 
 
 const STATS = [
-  { end: 30, suffix: "+", label: "Years in Business" },
-  { end: 25, suffix: "M+", label: "Industries Served" },
+  { end: 18, suffix: "+", label: "Years in Business" },
+  { end: 25, suffix: "K+", label: "Industries Served" },
   { end: 5000, suffix: "+", label: "Customers" },
   { end: 50, suffix: "+", label: "Trained Professionals" }
 ];
@@ -231,45 +231,40 @@ function App() {
     and industrial fabrication.
   </p>
 
-  <div className="row justify-content-center g-4">
+  <div class="row g-4">
 
-    {/* FIRE */}
-    <div className="col-md-4">
-      <a href="fire.html" className="text-decoration-none text-dark">
-        <div className="card p-5 shadow h-100 text-center">
-          <h4 className="fw-bold mb-3">Fire Services</h4>
-          <p className="text-muted">
-            Fire protection & firefighting systems
-          </p>
-        </div>
-      </a>
-    </div>
-
-    {/* ELECTRICAL */}
-    <div className="col-md-4">
-      <a href="electrical.html" className="text-decoration-none text-dark">
-        <div className="card p-5 shadow h-100 text-center">
-          <h4 className="fw-bold mb-3">Electrical Services</h4>
-          <p className="text-muted">
-            HT & LT electrical contracting solutions
-          </p>
-        </div>
-      </a>
-    </div>
-
-    {/* FABRICATION */}
-    <div className="col-md-4">
-      <a href="fabrication.html" className="text-decoration-none text-dark">
-        <div className="card p-5 shadow h-100 text-center">
-          <h4 className="fw-bold mb-3">Fabrication Services</h4>
-          <p className="text-muted">
-            Industrial & custom metal fabrication
-          </p>
-        </div>
-      </a>
-    </div>
-
+  <div class="col-md-4">
+    <a href="fire.html" class="service-slide fire-slide text-decoration-none">
+      <div class="service-overlay"></div>
+      <div class="service-text">
+        <h4 >Fire Services</h4>
+        <p>Fire protection & firefighting systems</p>
+      </div>
+    </a>
   </div>
+
+  <div class="col-md-4">
+    <a href="electrical.html" class="service-slide electrical-slide text-decoration-none">
+      <div class="service-overlay"></div>
+      <div class="service-text">
+        <h4 >Electrical Services</h4>
+        <p>HT & LT electrical contracting solutions</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="col-md-4">
+    <a href="fabrication.html" class="service-slide fabrication-slide text-decoration-none">
+      <div class="service-overlay"></div>
+      <div class="service-text">
+        <h4 >Fabrication Services</h4>
+        <p>Industrial & custom metal fabrication</p>
+      </div>
+    </a>
+  </div>
+
+</div>
+
 </section>
 
 {/* GROWTH PARTNERS */}
