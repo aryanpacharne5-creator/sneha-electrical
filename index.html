@@ -31,9 +31,17 @@
 <script type="text/babel">
 
 const HERO_IMAGES = [
-  "images/sprinkler.webp",
-  "images/fire_hydrant_system.webp",
-  "images/fire-detection.jpg"
+  "images/slides/slide5.jpeg",
+  "images/slides/slide1.jpeg",
+  "images/slides/slide2.jpeg",
+  "images/slides/slide3.jpeg",
+  "images/slides/slide4.jpeg",
+  "images/slides/slide6.jpeg",
+  "images/slides/slide7.jpeg",
+  "images/slides/slide8.jpeg",
+  "images/slides/slide9.jpeg",
+  "images/fire_hydrant_system.webp"
+  
 ];
 
 const SERVICES = [
@@ -72,15 +80,17 @@ function App() {
   const statsRef = React.useRef(null);
 
   React.useEffect(() => {
-    AOS.init({ once: true });
-  }, []);
+      AOS.init({ once: true });
+    }, []);
 
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      setHeroIndex(prev => (prev + 1) % HERO_IMAGES.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
+    React.useEffect(() => {
+      const interval = setInterval(() => {
+        setHeroIndex(prev => (prev + 1) % HERO_IMAGES.length);
+      }, 4000);
+
+      return () => clearInterval(interval);
+    }, []);
+
 
   React.useEffect(() => {
   const params = new URLSearchParams(window.location.search);
@@ -153,33 +163,87 @@ function App() {
       {/* NAVBAR */}
       <nav className="navbar navbar-expand-lg bg-white shadow sticky-top">
         <div className="container">
-          <span className="navbar-brand fw-bold">Sneha Electrical</span>
+          <a href="index.html" className="navbar-brand logo-wrap">
+            <img src="images/logo.png" alt="Logo" className="site-logo" />
+          </a>
           <button className="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="nav">
             <ul className="navbar-nav ms-auto">
               <li className="nav-item"><a className="nav-link" href="#about">About</a></li>
-              <li className="nav-item"><a className="nav-link" href="#products">Services</a></li>
               <li className="nav-item"><a className="nav-link" href="#contact">Contact</a></li>
+              <li className="nav-item"><a className="nav-link" href="#partners">Partners</a></li>
             </ul>
           </div>
         </div>
       </nav>
 
       {/* HERO */}
-      <section className="hero" style={{ "--bg": `url(${HERO_IMAGES[heroIndex]})` }}>
-        <style>{`.hero::before{background-image:var(--bg);}`}</style>
-        <div className="container">
-          <div className="hero-content">
-            <span className="badge bg-danger mb-3">Trusted Since 2007</span>
-            <h1>Pune’s Leading<br/> 
-                Fire Safety <br/>
-            Solutions Company </h1>
-            <p>End-to-end fire protection and electrical contracting services.</p>
-          </div>
+      <section className="hero">
+
+      {HERO_IMAGES.map((img, index) => (
+        <div
+          key={index}
+          className={`hero-slide ${index === heroIndex ? "active" : ""}`}
+          style={{ backgroundImage: `url(${img})` }}
+        ></div>
+      ))}
+
+  
+  <div className="container">
+    <div className="row align-items-center">
+
+      {/* LEFT CONTENT */}
+      <div className="col-md-6 hero-content">
+
+        <span className="badge bg-danger mb-3"></span>
+
+        <h1>
+          Pune’s Leading<br/>
+          Solutions Company
+        </h1>
+
+        <p>
+          End-to-end fire protection, electrical contracting and fabrication services.
+        </p>
+
+      </div>
+
+      {/* RIGHT ICON TILES */}
+      <div className="col-md-6 text-center mt-4 mt-md-0">
+
+        <div className="mb-4">
+          <div className="key-company">Sneha Electrical Corp & Co.</div>
+
+          <a href="electrical.html" className="key-tile">
+            <img src="images/icons/logo22.png" className="key-icon" />
+          </a>
         </div>
-      </section>
+
+        <div className="mb-4">
+          <div className="key-company">Samarth Tec Fab Corporation</div>
+
+          <a href="fabrication.html" className="key-tile">
+            <img src="images/icons/fabrication2.png" className="key-icon" />
+          </a>
+        </div>
+
+        <div>
+          <div className="key-company">ABS Fire Projects Pvt. Ltd.</div>
+
+          <a href="fire.html" className="key-tile">
+            <img src="images/icons/fire2.png" className="key-icon" />
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
 
       {/* ABOUT */}
       <section id="about" className="container py-5 text-center">
@@ -223,50 +287,7 @@ function App() {
 
 
      
-        {/* SERVICES */}
-<section id="products" className="container py-5">
-  <h2 className="text-danger text-center mb-4">Our Services</h2>
-
-  <p className="text-center text-muted mb-5">
-    Specialized solutions across fire safety, electrical works,
-    and industrial fabrication.
-  </p>
-
-  <div class="row g-4">
-
-  <div class="col-md-4">
-    <a href="fire.html" class="service-slide fire-slide text-decoration-none">
-      <div class="service-overlay"></div>
-      <div class="service-text">
-        <h4 >Fire Services</h4>
-        <p>Fire protection & firefighting systems</p>
-      </div>
-    </a>
-  </div>
-
-  <div class="col-md-4">
-    <a href="electrical.html" class="service-slide electrical-slide text-decoration-none">
-      <div class="service-overlay"></div>
-      <div class="service-text">
-        <h4 >Electrical Services</h4>
-        <p>HT & LT electrical contracting solutions</p>
-      </div>
-    </a>
-  </div>
-
-  <div class="col-md-4">
-    <a href="fabrication.html" class="service-slide fabrication-slide text-decoration-none">
-      <div class="service-overlay"></div>
-      <div class="service-text">
-        <h4 >Fabrication Services</h4>
-        <p>Industrial & custom metal fabrication</p>
-      </div>
-    </a>
-  </div>
-
-</div>
-
-</section>
+      
 
 {/* GROWTH PARTNERS */}
 <section id="partners" className="container py-5">
