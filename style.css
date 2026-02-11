@@ -19,7 +19,9 @@ img, video {
 .navbar-toggler:focus {
   box-shadow: none;
 }
-
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0,0,0,0.7)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
 
 
 
@@ -244,4 +246,31 @@ margin-top:15px;
   .site-logo {
     height: 45px;
   }
+}
+
+/* Mobile offcanvas-style navbar */
+
+@media (max-width: 991px) {
+
+  .navbar-collapse {
+    position: fixed;
+    top: 0;
+    right: -260px;
+    width: 260px;
+    height: 100vh;
+    background: white;
+    padding: 80px 20px 20px;
+    transition: right .3s ease;
+    box-shadow: -10px 0 30px rgba(0,0,0,.2);
+    z-index: 1050;
+  }
+
+  .navbar-collapse.show {
+    right: 0;
+  }
+
+  .navbar-nav {
+    gap: 15px;
+  }
+
 }
