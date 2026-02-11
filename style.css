@@ -250,18 +250,16 @@ margin-top:15px;
 
 /* Mobile offcanvas-style navbar */
 
-@media (max-width: 991px) {
+.premium-menu {
+  width: 100vw !important;
+  background: #fff;
+}
 
-  .navbar-collapse {
-    position: fixed;
-    top: 0;
-    right: -260px;
-    width: 260px;
-    height: 100vh;
-    background: white;
-    padding: 80px 20px 20px;
-    transition: right .3s ease;
-    box-shadow: -10px 0 30px rgba(0,0,0,.2);
-    z-index: 1050;
-  }
+.premium-menu .nav-link {
+  font-size: 26px;
+  color: #111;
+}
+
+.premium-menu .nav-link:hover {
+  color: #dc3545;
 }

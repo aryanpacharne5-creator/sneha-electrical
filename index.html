@@ -190,20 +190,31 @@ function App() {
       </nav>
 
       {/* Mobile offcanvas */}
-      <div className="offcanvas offcanvas-end" id="mobileMenu">
-        <div className="offcanvas-header">
-          <h5>Menu</h5>
+      <div className="offcanvas offcanvas-end premium-menu" id="mobileMenu">
+        <div className="offcanvas-header border-0">
+          <img src="images/logo.png" style={{height:"40px"}} />
           <button className="btn-close" data-bs-dismiss="offcanvas"></button>
         </div>
 
-        <div className="offcanvas-body">
-          <ul className="navbar-nav">
-            <li className="nav-item"><a className="nav-link" href="#about">About</a></li>
-            <li className="nav-item"><a className="nav-link" href="#contact">Contact</a></li>
-            <li className="nav-item"><a className="nav-link" href="#partners">Partners</a></li>
+        <div className="offcanvas-body d-flex align-items-center">
+          <ul className="navbar-nav text-center w-100 gap-4 fs-4 fw-semibold">
+
+            <li className="nav-item">
+              <a className="nav-link" data-bs-dismiss="offcanvas" href="#about">About</a>
+            </li>
+
+            <li className="nav-item">
+              <a className="nav-link" data-bs-dismiss="offcanvas" href="#contact">Contact</a>
+            </li>
+
+            <li className="nav-item">
+              <a className="nav-link" data-bs-dismiss="offcanvas" href="#partners">Partners</a>
+            </li>
+
           </ul>
         </div>
       </div>
+
 
 
       {/* HERO */}
