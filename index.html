@@ -20,6 +20,7 @@
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
+<link rel="preload" as="image" href="images/slides/slide1.webp">
 
 </head>
 
@@ -80,8 +81,10 @@ function App() {
   const statsRef = React.useRef(null);
 
   React.useEffect(() => {
-      AOS.init({ once: true });
-    }, []);
+    setTimeout(() => {
+      AOS.init({ once:true });
+    }, 1500);
+  }, []);
 
     React.useEffect(() => {
       const interval = setInterval(() => {
@@ -165,7 +168,13 @@ function App() {
         <div className="container">
 
           <a href="index.html" className="navbar-brand logo-wrap">
-            <img src="images/logo.png" alt="Logo" className="site-logo" />
+            <img
+              src="images/logo.png"
+              alt="Logo"
+              className="site-logo"
+              width="180"
+              height="100"
+            />
           </a>
 
           <button
@@ -192,7 +201,7 @@ function App() {
       {/* Mobile offcanvas */}
       <div className="offcanvas offcanvas-end premium-menu" id="mobileMenu">
         <div className="offcanvas-header border-0">
-          <img src="images/logo.png" style={{height:"40px"}} />
+          <img src="images/logo.png" height="40" width="72" />
           <button className="btn-close" data-bs-dismiss="offcanvas"></button>
         </div>
 
@@ -296,7 +305,7 @@ function App() {
           <div className="key-company">Sneha Electrical Corp & Co.</div>
 
           <a href="electrical.html" className="key-tile">
-            <img src="images/icons/logo22.png" className="key-icon" />
+            <img loading="lazy" src="images/icons/logo22.png" className="key-icon" />
           </a>
         </div>
 
@@ -304,7 +313,7 @@ function App() {
           <div className="key-company">Samarth Tec Fab Corporation</div>
 
           <a href="fabrication.html" className="key-tile">
-            <img src="images/icons/fabrication2.png" className="key-icon" />
+            <img loading="lazy" src="images/icons/fabrication2.png" className="key-icon" />
           </a>
         </div>
 
@@ -312,7 +321,7 @@ function App() {
           <div className="key-company">ABS Fire Projects Pvt. Ltd.</div>
 
           <a href="fire.html" className="key-tile">
-            <img src="images/icons/fire2.png" className="key-icon" />
+            <img loading="lazy" src="images/icons/fire2.png" className="key-icon" />
           </a>
         </div>
 
@@ -388,6 +397,7 @@ function App() {
       <div className="col-6 col-md-3 col-lg-2 text-center" key={i}>
         <div className="p-4 shadow-sm bg-white rounded h-100 d-flex align-items-center ">
           <img
+            loading="lazy"
             src={`images/partners/${logo}`}
             alt="Partner Logo"
             style={{ maxWidth: "100%", maxHeight: "150px", objectFit: "contain" }}
