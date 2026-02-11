@@ -200,45 +200,57 @@ function App() {
           <ul className="navbar-nav text-center w-100 gap-4 fs-4 fw-semibold">
 
             <li className="nav-item">
-              <a
+             <a
                 className="nav-link"
-                href="#about"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById("about").scrollIntoView({ behavior: "smooth" });
+                href="#"
+                onClick={() => {
+                  const offcanvas = bootstrap.Offcanvas.getInstance(document.getElementById("mobileMenu"));
+                  offcanvas.hide();
+
+                  setTimeout(() => {
+                    document.getElementById("about").scrollIntoView({ behavior: "smooth" });
+                  }, 300);
                 }}
-                data-bs-dismiss="offcanvas"
               >
                 About
               </a>
+
             </li>
 
             <li className="nav-item">
               <a
                 className="nav-link"
-                href="#contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+                href="#"
+                onClick={() => {
+                  const offcanvas = bootstrap.Offcanvas.getInstance(document.getElementById("mobileMenu"));
+                  offcanvas.hide();
+
+                  setTimeout(() => {
+                    document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+                  }, 300);
                 }}
-                data-bs-dismiss="offcanvas"
               >
                 Contact
               </a>
+
             </li>
 
             <li className="nav-item">
               <a
                 className="nav-link"
-                href="#partners"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById("partners").scrollIntoView({ behavior: "smooth" });
+                href="#"
+                onClick={() => {
+                  const offcanvas = bootstrap.Offcanvas.getInstance(document.getElementById("mobileMenu"));
+                  offcanvas.hide();
+
+                  setTimeout(() => {
+                    document.getElementById("partners").scrollIntoView({ behavior: "smooth" });
+                  }, 300);
                 }}
-                data-bs-dismiss="offcanvas"
               >
                 Partners
               </a>
+
             </li>
           </ul>
         </div>
