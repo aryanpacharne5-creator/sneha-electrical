@@ -264,13 +264,4 @@ margin-top:15px;
     box-shadow: -10px 0 30px rgba(0,0,0,.2);
     z-index: 1050;
   }
-
-  .navbar-collapse.show {
-    right: 0;
-  }
-
-  .navbar-nav {
-    gap: 15px;
-  }
-
 }
